@@ -8,10 +8,10 @@
 
 /* Dashboard pages ke liye body layout normal hona chahiye */
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
-  min-height: 100vh;
-  /* Fixed center hata diya gaya hai */
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    /* Yahan koi display: flex nahi hona chahiye */
 }
 
 /* Sirf Login/Signup container ke liye ye styling use karein */

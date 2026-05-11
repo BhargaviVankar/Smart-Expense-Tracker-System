@@ -1,12 +1,19 @@
-/* Purana Look Restore karne ke liye layout */
+/* 1. Page Layout Restore */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-color: #f8f9fa;
+}
+
 .home-container {
     display: grid;
-    grid-template-columns: 360px 1fr; /* Laptop par wahi purana 2-column layout */
-    gap: 40px;
-    padding: 30px;
-    max-width: 1400px;
+    /* Desktop par columns ko wide rakha hai */
+    grid-template-columns: 400px 1fr; 
+    gap: 50px; /* Space badha di taaki geech-pich na lage */
+    padding: 40px;
+    max-width: 1500px;
     margin: 0 auto;
-    background-color: #f8f9fa;
     box-sizing: border-box;
 }
 
@@ -14,41 +21,68 @@
     height: fit-content;
 }
 
+/* Card Styling for spaced look */
 .card-container {
     background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    padding: 35px; /* More padding for cleaner look */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .home-right {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    width: 100%;
 }
 
-/* Balance Card (Income/Expense line wala look) */
+/* 2. Balance & Stats Card */
 .details-card {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .stats-row {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    justify-content: flex-start; /* Details ko left-align rakha */
+    gap: 40px;
+    margin-top: 20px;
 }
 
-/* --- SIRF MOBILE KE LIYE CHANGES --- */
-@media (max-width: 900px) {
+/* 3. Transaction History (Single Line List) */
+.table-wrapper {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f1f1f1;
+    width: 100%; /* Full line cover karega */
+}
+
+.expense-description {
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex: 1; /* Description ko beech mein jagah di */
+    margin-left: 15px;
+}
+
+/* --- RESPONSIVE FIX (Mobile par sirf wrap hoga) --- */
+@media (max-width: 1000px) {
     .home-container {
-        grid-template-columns: 1fr; /* Mobile par automatic niche shift ho jayega */
-        padding: 15px;
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
     
     .stats-row {
-        flex-direction: row; /* Taaki Income/Expense ek hi line mein rahein */
+        gap: 20px;
     }
 }
