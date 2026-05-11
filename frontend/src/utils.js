@@ -12,4 +12,5 @@ export const handleError = (msg) => {
     })
 }
 
-export const APIUrl = process.env.REACT_APP_API_URL || 'https://smart-expense-tracker-system.onrender.com';
+// Updated APIUrl for Production
+export const APIUrl = 'https://smart-expense-tracker-system.onrender.com';
