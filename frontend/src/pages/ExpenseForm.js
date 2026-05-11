@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { handleError } from '../utils';
 
 function ExpenseForm({ addTransaction }) {
-    const [formData, setFormData] = useState({
-        text: '',
-        amount: '',
-        //stype: 'income' // Default 'income' rakha hai
-    });
+   const [formData, setFormData] = useState({
+    text: '',
+    amount: '',
+    type: 'income'
+});
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,7 +15,7 @@ function ExpenseForm({ addTransaction }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { text, amount, type } = formData;
+        const { text, amount } = formData;
         if (!text || !amount) {
             handleError('Please add text and amount');
             return;
