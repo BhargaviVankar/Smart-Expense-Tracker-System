@@ -9,46 +9,45 @@ const ensureAuthenticated = require('./Middlewares/Auth');
 
 require('dotenv').config();
 
-// Import db connection (non-blocking)
-const dbConnection = require('./Models/db');
+// Database connection
+require('./Models/db');
 
+// Render dynamic port settings
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
-// CORS configuration
-const corsOptions = {
-    origin: 'http://localhost:3000',
+// UPDATED CORS: Localhost aur Vercel dono ko allow karein
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://smart-expense-tracker-system-iota.vercel.app'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
-};
+}));
 
-// Apply CORS middleware
-app.use(cors(corsOptions));
-
-// Handle preflight requests explicitly
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
-
+// Routes
 app.get('/ping', (req, res) => {
     res.send('PONG');
 });
 
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
-app.use('/expenses', ensureAuthenticated, ExpenseRouter)
+app.use('/expenses', ensureAuthenticated, ExpenseRouter);
 
-
+// Important: App.listen sirf ek baar hona chahiye
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
-})
+    console.log(`Server is running on port ${PORT}`);
+});

@@ -1,6 +1,6 @@
 ```
 
-📁 MERN-Expense-Tracker/
+📁 Smart--Expense-Tracker-System/
 │
 ├── 💻 client/                    # React Frontend
 │   ├── 📂 public/               # Static files
