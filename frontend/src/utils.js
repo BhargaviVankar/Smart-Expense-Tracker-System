@@ -12,4 +12,5 @@ export const handleError = (msg) => {
     })
 }
 
+// Updated version: Direct Production URL
 export const APIUrl = 'https://smart-expense-tracker-system.onrender.com';
