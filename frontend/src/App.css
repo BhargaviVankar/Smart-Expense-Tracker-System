@@ -1,29 +1,13 @@
-/* 1. Page Layout & Scroll Fix */
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    /* overflow: hidden ko hata diya taaki mobile par scroll ho sake */
-    background-color: #f8f9fa;
-}
-
+/* Purana Look Restore karne ke liye layout */
 .home-container {
     display: grid;
-    grid-template-columns: 360px 1fr; /* Desktop layout */
-    gap: 30px;
-    padding: 20px;
-    max-width: 1200px;
+    grid-template-columns: 360px 1fr; /* Laptop par wahi purana 2-column layout */
+    gap: 40px;
+    padding: 30px;
+    max-width: 1400px;
     margin: 0 auto;
+    background-color: #f8f9fa;
     box-sizing: border-box;
-}
-
-/* Header/Welcome section styling */
-.user-section {
-    grid-column: 1 / -1; /* Header ko poori width di */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
 }
 
 .home-left {
@@ -41,80 +25,30 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
 }
 
-/* 2. Balance Card Styling */
+/* Balance Card (Income/Expense line wala look) */
 .details-card {
     background: white;
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.balance-amount {
-    font-size: 2.2rem;
-    color: #2d3436;
-    font-weight: 800;
-    margin: 5px 0 20px 0;
-}
-
-/* 3. Income & Expense Row */
 .stats-row {
     display: flex;
     justify-content: space-between;
     gap: 15px;
 }
 
-.stat-item {
-    flex: 1;
-}
-
-.value-box {
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 700;
-    text-align: center;
-}
-
-/* 4. Transaction History - Mobile Scrollable Fix */
-.table-wrapper {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: auto; /* Table agar badi ho toh side scroll dega */
-}
-
-.expense-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-/* --- MOBILE RESPONSIVE QUERIES --- */
-@media (max-width: 850px) {
+/* --- SIRF MOBILE KE LIYE CHANGES --- */
+@media (max-width: 900px) {
     .home-container {
-        grid-template-columns: 1fr; /* Single column for mobile */
+        grid-template-columns: 1fr; /* Mobile par automatic niche shift ho jayega */
         padding: 15px;
-        gap: 20px;
     }
-
-    .home-left, .home-right {
-        width: 100%;
-    }
-
-    .balance-amount {
-        font-size: 1.8rem;
-    }
-
+    
     .stats-row {
-        flex-direction: column; /* Income/Expense ek ke niche ek */
+        flex-direction: row; /* Taaki Income/Expense ek hi line mein rahein */
     }
 }
