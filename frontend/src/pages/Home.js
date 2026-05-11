@@ -95,7 +95,7 @@ function Home() {
             handleError(err);
         }
     }
-
+    // eslint-disable-next-line
     useEffect(() => {
         fetchExpenses()
     }, [])

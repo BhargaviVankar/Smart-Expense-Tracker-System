@@ -5,7 +5,7 @@ function ExpenseForm({ addTransaction }) {
     const [formData, setFormData] = useState({
         text: '',
         amount: '',
-        type: 'income' // Default 'income' rakha hai
+        //stype: 'income' // Default 'income' rakha hai
     });
 
     const handleChange = (e) => {
