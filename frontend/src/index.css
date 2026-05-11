@@ -11,7 +11,7 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
-    /* Yahan koi display: flex nahi hona chahiye */
+    /* Yahan flex ya center property mat lagana */
 }
 
 /* Sirf Login/Signup container ke liye ye styling use karein */
