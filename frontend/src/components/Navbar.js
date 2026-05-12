@@ -17,7 +17,14 @@ function Navbar({ user }) {
                 <h2 style={{ margin: 0, color: '#8b3dff' }}>Expensify</h2>
             </div>
             <div style={navLinks}>
-                <span style={{ marginRight: '20px', fontWeight: 'bold' }}>
+               <span
+    style={{
+        marginRight: '20px',
+        fontWeight: 'bold',
+        whiteSpace: 'nowrap',
+        fontSize: '28px'
+    }}
+>
                     Welcome, {user}
                 </span>
                 <button onClick={handleLogout} style={logoutBtn}>Logout</button>

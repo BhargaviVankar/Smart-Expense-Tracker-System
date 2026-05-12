@@ -5,7 +5,8 @@ function ExpenseForm({ addTransaction }) {
    const [formData, setFormData] = useState({
     text: '',
     amount: '',
-    type: 'income'
+    type: 'income',
+    category: 'Food'
 });
 
     const handleChange = (e) => {
@@ -22,7 +23,12 @@ function ExpenseForm({ addTransaction }) {
         }
         // Hum poora data (text, amount, aur type) bhej rahe hain
         addTransaction(formData);
-        setFormData({ text: '', amount: '', type: 'income' });
+        setFormData({
+    text: '',
+    amount: '',
+    type: 'income',
+    category: 'Food'
+});
     };
 
     return (
@@ -56,6 +62,25 @@ function ExpenseForm({ addTransaction }) {
                         <option value="expense">Expense (-)</option>
                     </select>
                 </div>
+                <div className="form-control">
+    <label>Category</label>
+
+    <select
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+    >
+        <option value="Food">Food</option>
+        <option value="Grocery">Grocery</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Salary">Salary</option>
+        <option value="Travel">Travel</option>
+        <option value="Hospital">Hospital</option>
+        <option value="Bills">Bills</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Other">Other</option>
+    </select>
+</div>
                 <button className="btn">Add Transaction</button>
             </form>
         </div>
