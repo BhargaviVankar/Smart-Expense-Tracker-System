@@ -267,31 +267,3 @@ html, body {
     padding-right: 10px;
 }
 
-/* Mobile Responsive Fixes */
-@media (max-width: 768px) {
-  /* 1. Main layout ko column mein change karein */
-  .main-container-class { 
-    flex-direction: column !important;
-    align-items: center;
-  }
-
-  /* 2. Form aur History ki width full karein */
-  .form-section-class, .history-section-class {
-    width: 95% !important;
-    margin: 10px 0 !important;
-  }
-
-  /* 3. Table ko scrollable banayein taaki text na chhupne lage */
-  .table-wrapper {
-    overflow-x: auto;
-    display: block;
-    width: 100%;
-  }
-
-  /* 4. Category badge fix */
-  .category-badge-class {
-    white-space: nowrap;
-    padding: 5px 12px !important;
-    display: inline-block !important;
-  }
-}
