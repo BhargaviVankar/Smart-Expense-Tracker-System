@@ -36,7 +36,7 @@ const ExpenseTable = ({ expenses, deleteExpens }) => {
 
                         {/* Category */}
                         <div className="expense-category">
-                            {expense.category}
+                            {expense.category || "General"}
                         </div>
 
                         {/* Date */}

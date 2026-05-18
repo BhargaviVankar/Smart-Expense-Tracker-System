@@ -72,9 +72,10 @@ function Home() {
             }
 
             const payload = {
-                text: data.text,
-                amount: finalAmount
-            };
+    text: data.text,
+    amount: finalAmount,
+    category: data.category
+};
 
             const url = `${APIUrl}/expenses`;
 

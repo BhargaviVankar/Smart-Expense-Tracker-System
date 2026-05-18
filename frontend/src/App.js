@@ -22,13 +22,26 @@ function App() {
   const PrivateRoute = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />
   }
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+}, [darkMode]);
 
   return (
     <div className="App">
       <RefrshHandler setIsAuthenticated={setIsAuthenticated} />
       
       {/* Navbar sirf tab dikhega jab user login hoga */}
-      {isAuthenticated && <Navbar user={loggedInUser} />}
+      {isAuthenticated && <Navbar
+    user={loggedInUser}
+    darkMode={darkMode}
+    setDarkMode={setDarkMode}
+/>}
 
       <Routes>
         <Route path='/' element={<Navigate to="/login" />} />

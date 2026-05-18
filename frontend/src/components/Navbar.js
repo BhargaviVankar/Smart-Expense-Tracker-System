@@ -1,39 +1,55 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { handleSuccess } from '../utils'; // Check kariyega aapka path yahi hai na
-function Navbar({ user }) {
+import { handleSuccess } from '../utils';
+
+function Navbar({ user, darkMode, setDarkMode }) {
+
     const navigate = useNavigate();
+
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedInUser');
+
         handleSuccess('User Loggedout');
+
         setTimeout(() => {
             navigate('/login');
         }, 1000);
     };
+
     return (
         <nav style={navStyle}>
             <div className="nav-logo">
-                <h2 style={{ margin: 0, color: '#8b3dff' }}>Expensify</h2>
+                <h2 style={{ margin: 0, color: '#8b3dff' }}>
+                    Expensify
+                </h2>
             </div>
+
             <div style={navLinks}>
-               <span
-    style={{
-        marginRight: '20px',
-        fontWeight: 'bold',
-        whiteSpace: 'nowrap',
-        fontSize: '28px'
-    }}
->
+
+                <span style={{ marginRight: '20px', fontWeight: 'bold' }}>
                     Welcome, {user}
                 </span>
-                <button onClick={handleLogout} style={logoutBtn}>Logout</button>
+
+                {/* DARK MODE BUTTON */}
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    style={themeBtn}
+                >
+                    {darkMode ? '☀️' : '🌙'}
+                </button>
+
+                <button
+                    onClick={handleLogout}
+                    style={logoutBtn}
+                >
+                    Logout
+                </button>
+
             </div>
         </nav>
     );
 }
-
-// Chhote se inline styles (Aap baad mein CSS mein move kar sakte hain)
 
 const navStyle = {
     display: 'flex',
@@ -49,7 +65,17 @@ const navStyle = {
 
 const navLinks = {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: '10px'
+};
+
+const themeBtn = {
+    backgroundColor: '#222',
+    color: 'white',
+    border: 'none',
+    padding: '8px 12px',
+    borderRadius: '8px',
+    cursor: 'pointer'
 };
 
 const logoutBtn = {

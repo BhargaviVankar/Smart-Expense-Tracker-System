@@ -32,7 +32,7 @@ function ExpenseForm({ addTransaction }) {
     };
 
     return (
-        <div className="container">
+        <div className="card-container">
             <h3>Add New Transaction</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-control">
